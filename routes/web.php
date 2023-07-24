@@ -18,8 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/upload', function () {
-    return view('upload');
-});
+// Route::get('/upload', function () {
+//     return view('upload');
+// });
 Route::get('/upload', [fileController::class, 'index'])->name('file.index');
 Route::put('/upload', [fileController::class, 'upload'])->name('file.upload');
+Route::post('/download', [fileController::class, 'download'])->name('file.download');

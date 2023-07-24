@@ -51,29 +51,26 @@
         </nav>
     </header>
 
-    <h1 style="margin-left: 7%;">Upload file</h1>
-    @if($success)
-    <div class="alert alert-success">
-        {{ $success }}
-    </div>
-    @endif
-
-
-    <form action=" {{ route('file.upload')  }} " method="post" style="width: 70%;  margin-left:7% " enctype='multipart/form-data'>
-        {{ csrf_field() }}
-        @method('put')
-        <div class="form-floating mb-3">
-            <input type="file" class="form-control" name="file" id="file" placeholder="File">
-            <label for="file">File</label>
+    <body>
+        <div class="card text-center">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Your File Code</h5>
+                <p>{{ $code }} </p>
+               
+                <form method="post" action="{{ route('file.download' ) }}">
+                    @csrf
+                    <label>Type File Code to Download </label> <br>
+                    <input type="text" name="code">
+                    <br>
+                    <button class="blue" type="submit" name="download" value="Download">Download</button>
+                </form>
+            </div>
+            <div class="card-footer text-body-secondary">
+                2 days ago
+            </div>
         </div>
-        <div class="form-floating mb-3">
-       
-            <!-- $varbl = App::make("ControllerName")->FunctionName($params); -->
-        <!-- <input class="" name="code" id="code" >
-        <label for="code">Code</label>
-        </div> -->
-        <button type="submit" name="create" class="btn btn-primary">Upload</button>
-    </form>
-</body>
+    </body>
 
 </html>
