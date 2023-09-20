@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\filedownload;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Request;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -25,7 +27,20 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+    
+        Event::listen('file.downloaded', function($file){
+            $count = filedownload::find($file->id)->count;
+            $file->update([
+                'count' => ++$count,
+            ]);
+        //    $created =  $file->update([
+        //         'file_id' => $file->id,
+        //         'ip' => $ip,
+        //         'user_agent' => $user_agent,
+        //         'count' => ++$count,
+        //     ]);
+            // dd($created);
+        });
     }
 
     /**

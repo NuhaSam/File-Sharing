@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // Route::get('/upload', function () {
 //     return view('upload');
 // });
 Route::get('/upload', [fileController::class, 'index'])->name('file.index');
-Route::put('/upload', [fileController::class, 'upload'])->name('file.upload');
+Route::put('/uploads', [fileController::class, 'upload'])->name('file.uploads');
+Route::get('/download', [fileController::class, 'showDownload'])->name('file.showDownload');
 Route::post('/download', [fileController::class, 'download'])->name('file.download');
