@@ -185,4 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'supabase_bucket' => env('SUPABASE_BUCKET'),
+    'supabase_url'=> env('SUPABASE_URL'),
 ];

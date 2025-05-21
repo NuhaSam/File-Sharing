@@ -16,12 +16,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
-// Route::get('/upload', function () {
-//     return view('upload');
-// });
+
 Route::get('/upload', [fileController::class, 'index'])->name('file.index');
-Route::put('/uploads', [fileController::class, 'upload'])->name('file.uploads');
+Route::put('/upload', [fileController::class, 'upload'])->name('file.uploads');
 Route::get('/download', [fileController::class, 'showDownload'])->name('file.showDownload');
 Route::post('/download', [fileController::class, 'download'])->name('file.download');
+
+Route::view('/file-sharing/contact','technical-support')->name('contact');
+
+Route::get('lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'ar'])) {
+        abort(400);
+    }
+    session()->put('locale', $locale);
+    app()->setLocale($locale);
+    // return $locale;
+
+    return redirect()->back();
+})->name('lang.switch');

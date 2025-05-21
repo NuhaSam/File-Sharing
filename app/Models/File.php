@@ -10,6 +10,6 @@ class File extends Model
     use HasFactory;
 
     protected $fillable =[
-        'file' ,'code'
+        'file' ,'code','count'
     ];
 }
