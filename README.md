@@ -47,10 +47,10 @@ php artisan migrate
 6. ** Serve the application**
 php artisan serve
 
-📄 License
+## 📄 License
 This project is open-source under the MIT License.
 
-🤝 Contributing
+## 🤝 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 
