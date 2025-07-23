@@ -15,7 +15,7 @@ A simple yet powerful file-sharing platform built with **Laravel** and **Tailwin
 - **Backend**: Laravel 11+
 - **Frontend**: Tailwind CSS
 - **Storage**: Supabase Storage
-- **Database**: MySQL / PostgreSQL (configurable)
+- **Database**: MySQL
 
 ## ⚙️ Installation
 
@@ -27,6 +27,10 @@ cd File-Sharing
 
 2. **Install dependencies**
 
+composer install
+
+npm install && npm run dev
+
 3. **Setup environment**
 cp .env.example .env
 php artisan key:generate
@@ -37,14 +41,19 @@ php artisan key:generate
 In .env, add your Supabase credentials:
 
 SUPABASE_URL=https://your-project.supabase.co
+
 SUPABASE_KEY=your-supabase-api-key
+
 SUPABASE_BUCKET=your-bucket-name
 
+
 5. **Run migrations**
+
 php artisan migrate
 
 
-6. ** Serve the application**
+6. **Serve the application**
+
 php artisan serve
 
 ## 📄 License
